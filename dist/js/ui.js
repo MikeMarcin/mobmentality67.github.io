@@ -1014,6 +1014,7 @@ SIM.UI = {
                             <tr>
                                 ${editmode ? '<th></th>' : ''}
                                 <th>Name</th>
+                                <th>Gems</th>
                                 <th>Source</th>
                                 <th>Sta</th>
                                 <th>Str</th>
@@ -1057,10 +1058,21 @@ SIM.UI = {
             if (tooltip == 198981) tooltip = 19898;
             if (item.rand) rand = '?rand=' + item.rand;
 
+            let itemLink = `<a href="https://www.google.com"></a>`; //`<a href="https://tbc.wowhead.com/item=${tooltip}${rand}"></a>`;
+
+            //<img src="dist/img/${iconname}.jpg " alt="${buff.name}">
+            // <a href=https://tbc.wowhead.com/item=24028">
+            // <a href=https://tbc.wowhead.com/item=24061">
+            let gem0 = `<a href="https://tbc.wowhead.com/item=24028"></a>Uno`;
+            let gem1 = `<a href="https://tbc.wowhead.com/item=24061"></a>Dos`;
+            let gem2 = `<a href="https://tbc.wowhead.com/item=24028">Tres</a>`;
+            let gems = `<span>${gem0} ${gem1} ${gem2}</span>`;
+
             table += `<tr data-id="${item.id}" class="${item.selected ? 'active' : ''} ${item.hidden ? 'hidden' : ''}">
                         ${editmode ? '<td class="hide">' + (item.hidden ? eyesvghidden : eyesvg) + '</td>' : ''}
-                        <td><a href="https://tbc.wowhead.com/item=${tooltip}${rand}"></a>${item.name}</td>
-                        <td>${item.source || ''}</td>
+                        <td>${itemLink}${item.name}</td>
+                        <td class="gems">${gems}</td>
+                        <td>${itemLink}${item.source || ''}</td>
                         <td>${item.sta || ''}</td>
                         <td>${item.str || ''}</td>
                         <td>${item.agi || ''}</td>
